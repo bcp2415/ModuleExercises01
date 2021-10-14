@@ -5,14 +5,22 @@ function printAll(names, tests, scores){
   let row = '';
 
   for (let i = 0; i<tests.length; i++){
-    header += '\t'+tests[i];
+    if (tests[i] === 'Nav') {
+      header += '\t' + tests[i] + '\t';
+    } else {
+      header += '\t' + tests[i];
+    }
   }
   console.log(header);
 
   for (let name = 0; name<names.length; name++){
-    row = names[name];
+    if (names[name].length < 4) {
+      row = names[name] + '\t';
+    } else {
+      row = names[name];
+    }
     for (let score = 0; score<scores[name].length;score++){
-      row += '\t'+scores[name][score];
+      row += '\t'+scores[name][score] + '\t';
     }
     console.log(row);
   }
@@ -35,6 +43,4 @@ function printTestScores(index,test,students,scores){
   return;
 }
 
-module.exports = {
-  printAll: printAll
-}
+module.exports = printAll;
